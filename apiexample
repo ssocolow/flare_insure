@@ -1,0 +1,5 @@
+curl --request GET \
+     --url 'https://api.tomorrow.io/v4/weather/forecast?location=new%20york&apikey=DB10yhduZtjlUqQce22CAdSAUAj78SIx' \
+     --compressed \
+     --header 'accept: application/json' \
+     --header 'accept-encoding: deflate, gzip, br'
