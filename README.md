@@ -69,7 +69,7 @@ If you are new to Hardhat please check the [Hardhat getting started doc](https:/
     Make sure that you have added API Keys in the `.env` file
 
    ```console
-   npx hardhat run scripts/tryDeployment.ts
+   npx hardhat run scripts/tryDeployment.ts --network coston2
    ```
 
 ## Resources
