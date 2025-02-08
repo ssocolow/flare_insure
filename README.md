@@ -1,6 +1,7 @@
-## If you are from the eth-global/encode hackathon https://github.com/flare-foundation/flare-hardhat-starter/tree/encode-hackathon is the branch you look for
+# Rainfall Insurance on Flare with FDC (Flare Data Connector)
 
-## Flare Hardhat Starter Kit
+Are you a farme
+## Forked repo info - Flare Hardhat Starter Kit
 
 **IMPORTANT!!**
 The supporting library uses Openzeppelin version `4.9.3`, be careful to use the documentation and examples from that library version.
