@@ -1,11 +1,11 @@
 import { artifacts, ethers, run } from "hardhat";
-import { StarWarsCharacterListInstance } from "../typechain-types";
+import { CityRainfallListInstance } from "../typechain-types";
 
-const StarWarsCharacterList = artifacts.require("StarWarsCharacterList");
+const CityRainfallList = artifacts.require("CityRainfallList");
 const FDCHub = artifacts.require("@flarenetwork/flare-periphery-contracts/coston/IFdcHub.sol:IFdcHub");
 
 // Simple hex encoding
-function toHex(data) {
+function toHex(data: string) {
     var result = "";
     for (var i = 0; i < data.length; i++) {
         result += data.charCodeAt(i).toString(16);
@@ -13,18 +13,18 @@ function toHex(data) {
     return result.padEnd(64, "0");
 }
 
-const { JQ_VERIFIER_URL_TESTNET, JQ_API_KEY, VERIFIER_URL_TESTNET, VERIFIER_PUBLIC_API_KEY_TESTNET, DA_LAYER_URL_COSTON } = process.env;
+const { JQ_VERIFIER_URL_TESTNET, JQ_API_KEY, VERIFIER_URL_TESTNET, VERIFIER_PUBLIC_API_KEY_TESTNET, DA_LAYER_URL_COSTON2 } = process.env;
 
 const TX_ID =
     "0xae295f8075754f795142e3238afa132cd32930f871d21ccede22bbe80ae31f73";
 
 // const STAR_WARS_LIST_ADDRESS = "0xD7e76b28152aADC59D8C857a1645Ea1552F7f7fB"; // coston
-const STAR_WARS_LIST_ADDRESS = "0xc32C216027674306d2B9C6518c0C2f720ceC39CD"; // coston2
+const RAINFALL_LIST_ADDRESS = "0xE008098138A59C789bf0Ef525D639600116491D6"; // coston2
 
 async function deployMainList() {
-    const list: StarWarsCharacterListInstance = await StarWarsCharacterList.new();
+    const list: CityRainfallListInstance = await CityRainfallList.new();
 
-    console.log("Char list deployed at:", list.address);
+    console.log("Rainfall list deployed at:", list.address);
     // verify 
     const result = await run("verify:verify", {
         address: list.address,
@@ -32,9 +32,9 @@ async function deployMainList() {
     })
 }
 
-deployMainList().then((data) => {
-    process.exit(0);
-});
+// deployMainList().then((data) => {
+//     process.exit(0);
+// });
 
 
 async function prepareRequest() {
@@ -44,25 +44,48 @@ async function prepareRequest() {
         "attestationType": attestationType,
         "sourceId": sourceType,
         "requestBody": {
-            "url": "https://swapi.dev/api/people/3/",
+            "url": "https://raw.githubusercontent.com/ssocolow/hackathon-api/refs/heads/main/response.json",
             "postprocessJq": `{
-                name: .name,
-                height: .height,
-                mass: .mass,
-                numberOfFilms: .films | length,
-                uid: (.url | split("/") | .[-2] | tonumber)
+                nairobi: .Nairobi,
+                accra: .Accra,
+                lagos: .Lagos,
+                lusaka: .Lusaka,
+                addis_ababa: .Addis_Ababa
             }`,
             "abi_signature": `
             {\"components\": [
-                {\"internalType\": \"string\",\"name\": \"name\",\"type\": \"string\"},
-                {\"internalType\": \"uint256\",\"name\": \"height\",\"type\": \"uint256\"},
-                {\"internalType\": \"uint256\",\"name\": \"mass\",\"type\": \"uint256\"},
-                {\"internalType\": \"uint256\",\"name\": \"numberOfFilms\",\"type\": \"uint256\"},
-                {\"internalType\": \"uint256\",\"name\": \"uid\",\"type\": \"uint256\"}
+                {\"internalType\": \"uint16\",\"name\": \"nairobi\",\"type\": \"uint16\"},
+                {\"internalType\": \"uint16\",\"name\": \"accra\",\"type\": \"uint16\"},
+                {\"internalType\": \"uint16\",\"name\": \"lagos\",\"type\": \"uint16\"},
+                {\"internalType\": \"uint16\",\"name\": \"lusaka\",\"type\": \"uint16\"},
+                {\"internalType\": \"uint16\",\"name\": \"addis_ababa\",\"type\": \"uint16\"}
             ],
-            \"name\": \"task\",\"type\": \"tuple\"}`
+            \"name\": \"RainfallDTO\",\"type\": \"tuple\"}`
         }
     };
+    // const requestData = {
+    //     "attestationType": attestationType,
+    //     "sourceId": sourceType,
+    //     "requestBody": {
+    //         "url": "https://swapi.dev/api/people/2/",
+    //         "postprocessJq": `{
+    //             name: .name,
+    //             height: .height,
+    //             mass: .mass,
+    //             numberOfFilms: .films | length,
+    //             uid: (.url | split("/") | .[-2] | tonumber)
+    //         }`,
+    //         "abi_signature": `
+    //         {\"components\": [
+    //             {\"internalType\": \"string\",\"name\": \"name\",\"type\": \"string\"},
+    //             {\"internalType\": \"uint256\",\"name\": \"height\",\"type\": \"uint256\"},
+    //             {\"internalType\": \"uint256\",\"name\": \"mass\",\"type\": \"uint256\"},
+    //             {\"internalType\": \"uint256\",\"name\": \"numberOfFilms\",\"type\": \"uint256\"},
+    //             {\"internalType\": \"uint256\",\"name\": \"uid\",\"type\": \"uint256\"}
+    //         ],
+    //         \"name\": \"task\",\"type\": \"tuple\"}`
+    //     }
+    // };
 
     const response = await fetch(
         `${JQ_VERIFIER_URL_TESTNET}JsonApi/prepareRequest`,
@@ -86,17 +109,18 @@ async function prepareRequest() {
 //     process.exit(0);
 // });
 
-const firstVotingRoundStartTs = 1658429955;
+const firstVotingRoundStartTs = 1658430000;
 const votingEpochDurationSeconds = 90;
 
 async function submitRequest() {
     const requestData = await prepareRequest();
 
-    const starWarsList: StarWarsCharacterListInstance = await StarWarsCharacterList.at(STAR_WARS_LIST_ADDRESS);
+    const rainfallList: CityRainfallListInstance = await CityRainfallList.at(RAINFALL_LIST_ADDRESS);
 
 
-    const fdcHUB = await FDCHub.at(await starWarsList.getFdcHub());
+    const fdcHUB = await FDCHub.at(await rainfallList.getFdcHub());
 
+    // console.log(requestData);
     // Call to the FDC Hub protocol to provide attestation.
     const tx = await fdcHUB.requestAttestation(requestData.abiEncodedRequest, {
         value: ethers.parseEther("1").toString(),
@@ -131,12 +155,12 @@ Validation Work Below
 */
 
 
-const TARGET_ROUND_ID = 894447; // 0
+const TARGET_ROUND_ID = 895758; // 0
 
 async function getProof(roundId: number) {
     const request = await prepareRequest();
     const proofAndData = await fetch(
-        `${DA_LAYER_URL_COSTON}fdc/get-proof-round-id-bytes`,
+        `${DA_LAYER_URL_COSTON2}fdc/get-proof-round-id-bytes`,
         {
             method: "POST",
             headers: {
@@ -166,22 +190,22 @@ async function getProof(roundId: number) {
 async function submitProof() {
     const dataAndProof = await getProof(TARGET_ROUND_ID);
     console.log(dataAndProof);
-    const starWarsList = await StarWarsCharacterList.at(STAR_WARS_LIST_ADDRESS);
+    const rainfallList = await CityRainfallList.at(RAINFALL_LIST_ADDRESS);
 
-    const tx = await starWarsList.addCharacter({
+    const tx = await rainfallList.updateRainfall({
         merkleProof: dataAndProof.proof,
         data: dataAndProof.response,
     });
     console.log(tx.tx);
-    console.log(await starWarsList.getAllCharacters());
+    console.log(await rainfallList.getAllCityData());
 }
 
 
-// submitProof()
-//     .then((data) => {
-//         console.log("Submitted proof");
-//         process.exit(0);
-//     })
-//     .catch((e) => {
-//         console.error(e);
-//     });
+submitProof()
+    .then((data) => {
+        console.log("Submitted proof");
+        process.exit(0);
+    })
+    .catch((e) => {
+        console.error(e);
+    });
