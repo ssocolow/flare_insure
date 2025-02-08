@@ -19,7 +19,7 @@ const TX_ID =
     "0xae295f8075754f795142e3238afa132cd32930f871d21ccede22bbe80ae31f73";
 
 // const STAR_WARS_LIST_ADDRESS = "0xD7e76b28152aADC59D8C857a1645Ea1552F7f7fB"; // coston
-const STAR_WARS_LIST_ADDRESS = "0x531B6E1e924aa8b431D1cacF517468DF2c3faa4F"; // coston2
+const STAR_WARS_LIST_ADDRESS = "0xc32C216027674306d2B9C6518c0C2f720ceC39CD"; // coston2
 
 async function deployMainList() {
     const list: StarWarsCharacterListInstance = await StarWarsCharacterList.new();
@@ -32,9 +32,9 @@ async function deployMainList() {
     })
 }
 
-// deployMainList().then((data) => {
-//     process.exit(0);
-// });
+deployMainList().then((data) => {
+    process.exit(0);
+});
 
 
 async function prepareRequest() {
@@ -169,11 +169,11 @@ async function submitProof() {
 }
 
 
-submitProof()
-    .then((data) => {
-        console.log("Submitted proof");
-        process.exit(0);
-    })
-    .catch((e) => {
-        console.error(e);
-    });
+// submitProof()
+//     .then((data) => {
+//         console.log("Submitted proof");
+//         process.exit(0);
+//     })
+//     .catch((e) => {
+//         console.error(e);
+//     });
