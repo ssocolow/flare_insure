@@ -1,4 +1,4 @@
-# Flaresure - Rainfall Insurance on Flare with FDC (Flare Data Connector)
+# Flareinsure - Rainfall Insurance on Flare with FDC (Flare Data Connector)
 
 Are you a farmer? Or someone who wants to hedge for or against rain? Then Flaresure is for you!
 
