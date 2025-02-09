@@ -201,6 +201,7 @@ async function submitProof(roundId: number) {
 }
 
 const data = loadData('shared-data.json');
+console.log("my data", data.myValue);
 // console.log(data.myValue); // 42
 submitProof(data.myValue)
     .then((data) => {
