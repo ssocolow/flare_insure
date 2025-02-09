@@ -2,6 +2,18 @@
 
 Are you a farmer? Or someone who wants to hedge for or against rain? Then Flaresure is for you!
 
+We use two smart contracts:
+
+1. An Oracle contract that interfaces with the Flare Data Connector (FDC) to get rainfall data
+2. A Policy contract that allows you to buy and redeem policies
+  
+
+![Example screenshot](screenshot.png)
+
+## Design
+
+![System design whiteboard](whiteboard.jpg)
+
 ## Forked repo info - Flare Hardhat Starter Kit
 
 **IMPORTANT!!**

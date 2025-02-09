@@ -20,7 +20,7 @@ const TX_ID =
     "0xae295f8075754f795142e3238afa132cd32930f871d21ccede22bbe80ae31f73";
 
 // const STAR_WARS_LIST_ADDRESS = "0xD7e76b28152aADC59D8C857a1645Ea1552F7f7fB"; // coston
-const RAINFALL_LIST_ADDRESS = "0x1504Dbc62e8a8ffDcB948D08A4E2Be55bBc3032B"; // coston2
+const RAINFALL_LIST_ADDRESS = "0x335BCfba4aB4f3B9E052f13525D8017DB574b7C9"; // coston2
 
 async function deployMainList() {
     const list: CityRainfallListInstance = await CityRainfallList.new();
@@ -45,7 +45,7 @@ async function prepareRequest() {
         "attestationType": attestationType,
         "sourceId": sourceType,
         "requestBody": {
-            "url": "https://ethoxford-vercel-8c0r86bqi-simon-socolows-projects.vercel.app/api",
+            "url": "https://ethoxford-vercel-api.vercel.app/api",
             "postprocessJq": `{
                 nairobi: .Nairobi,
                 accra: .Accra,
