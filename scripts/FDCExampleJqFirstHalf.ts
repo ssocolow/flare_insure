@@ -21,7 +21,7 @@ const TX_ID =
     "0xae295f8075754f795142e3238afa132cd32930f871d21ccede22bbe80ae31f73";
 
 // const STAR_WARS_LIST_ADDRESS = "0xD7e76b28152aADC59D8C857a1645Ea1552F7f7fB"; // coston
-const RAINFALL_LIST_ADDRESS = "0xE008098138A59C789bf0Ef525D639600116491D6"; // coston2
+const RAINFALL_LIST_ADDRESS = "0x1504Dbc62e8a8ffDcB948D08A4E2Be55bBc3032B"; // coston2
 
 async function deployMainList() {
     const list: CityRainfallListInstance = await CityRainfallList.new();
@@ -46,7 +46,7 @@ async function prepareRequest() {
         "attestationType": attestationType,
         "sourceId": sourceType,
         "requestBody": {
-            "url": "https://raw.githubusercontent.com/ssocolow/hackathon-api/refs/heads/main/response.json",
+            "url": "https://ethoxford-vercel-8c0r86bqi-simon-socolows-projects.vercel.app/api",
             "postprocessJq": `{
                 nairobi: .Nairobi,
                 accra: .Accra,
