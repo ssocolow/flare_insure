@@ -1,0 +1,15 @@
+
+
+
+General Notes
+- Seller ought to be able to dictate terms (how many days ahead)
+2 main functions
+- purchasePolicy: Buy new insurance coverage
+- checkWeatherAndPay: Verify weather conditions and process claims
+2 extra functions. 
+- cancelPolicy: Early cancellation with partial refund
+-getPolicyDetails: View policy information
+
+Extra:
+- Have some sort of buffer when buyer can 
+

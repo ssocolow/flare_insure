@@ -44,7 +44,7 @@ contract WeatherInsuranceMarketplace {
     // Constant values
     uint256 public constant SETTLEMENT_WINDOW = 7 days;
 
-    address public constant OTHER_CONTRACT = 0xE008098138A59C789bf0Ef525D639600116491D6;
+    address public constant OTHER_CONTRACT = 0x335BCfba4aB4f3B9E052f13525D8017DB574b7C9;
     IWeatherOracle RAINFALL_ORACLE = IWeatherOracle(OTHER_CONTRACT);
 
     // Events for logging contract activity
