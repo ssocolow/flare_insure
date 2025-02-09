@@ -1,5 +1,6 @@
 import { artifacts, ethers, run } from "hardhat";
 import { CityRainfallListInstance } from "../typechain-types";
+import { loadData } from './shared';
 
 const CityRainfallList = artifacts.require("CityRainfallList");
 const FDCHub = artifacts.require("@flarenetwork/flare-periphery-contracts/coston/IFdcHub.sol:IFdcHub");
@@ -108,7 +109,7 @@ async function prepareRequest() {
 //     console.log("Prepared request:", data);
 //     process.exit(0);
 // });
-
+let TARGET_ROUND_ID = 895758; // 0
 const firstVotingRoundStartTs = 1658430000;
 const votingEpochDurationSeconds = 90;
 
@@ -141,12 +142,12 @@ async function submitRequest() {
     return roundId;
 }
 
-submitRequest().then((data) => {
-    console.log("Submitted request:", data);
-    process.exit(0);
-});
-
-
+// submitRequest().then((data) => {
+//     TARGET_ROUND_ID = data;
+//     console.log("Submitted request:", data);
+//     submitProof();
+//     process.exit(0);
+// });
 
 
 
@@ -155,7 +156,6 @@ Validation Work Below
 */
 
 
-const TARGET_ROUND_ID = 895758; // 0
 
 async function getProof(roundId: number) {
     const request = await prepareRequest();
@@ -187,8 +187,8 @@ async function getProof(roundId: number) {
 //     });
 
 
-async function submitProof() {
-    const dataAndProof = await getProof(TARGET_ROUND_ID);
+async function submitProof(roundId: number) {
+    const dataAndProof = await getProof(roundId);
     console.log(dataAndProof);
     const rainfallList = await CityRainfallList.at(RAINFALL_LIST_ADDRESS);
 
@@ -200,8 +200,9 @@ async function submitProof() {
     console.log(await rainfallList.getAllCityData());
 }
 
-
-submitProof()
+const data = loadData('shared-data.json');
+// console.log(data.myValue); // 42
+submitProof(data.myValue)
     .then((data) => {
         console.log("Submitted proof");
         process.exit(0);
