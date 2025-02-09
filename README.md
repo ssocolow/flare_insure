@@ -6,9 +6,15 @@ We use two smart contracts:
 
 1. An Oracle contract that interfaces with the Flare Data Connector (FDC) to get rainfall data
 2. A Policy contract that allows you to buy and redeem policies
-  
 
 ![Example screenshot](screenshot.png)
+
+## Frontend
+Repo: https://github.com/Mushrimpy/blockinsure_flare. We used React, Next.js, and Scaffold-Eth to build the frontend. The frontend FDC button calls a server running with a docker container from this repo: https://github.com/ssocolow/docker-test.
+
+## Acknowledgements
+Special thanks to Phillip and the rest of the Flare team for helping us get set up and guiding our build! Also thanks to Adam Spiers for the invaluable mentorship he provided.
+
 
 ## Design
 Final design:
