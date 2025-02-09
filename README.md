@@ -15,6 +15,8 @@ Repo: https://github.com/Mushrimpy/blockinsure_flare. We used React, Next.js, an
 ## Acknowledgements
 Special thanks to Phillip and the rest of the Flare team for helping us get set up and guiding our build! Also thanks to Adam Spiers for the invaluable mentorship he provided.
 
+## Our Flare Experience
+It was really fun and interesting working with a data blockchain for the first time and creatively exploring the possibilities associated with it. It was a little difficult getting started with the JQ processor, but after a while it became a lot smoother. Overall appreciated the robustness of the FDC with its flexiblity in taking in different data sources. We realized the large scope of opportunities associated with enshrined protocols.
 
 ## Design
 Final design:
