@@ -11,8 +11,14 @@ We use two smart contracts:
 ![Example screenshot](screenshot.png)
 
 ## Design
+Final design:
+![System design](scheme.png)
 
+Initial design:
 ![System design whiteboard](whiteboard.jpg)
+
+## Team
+![Team](breakfast.jpg)
 
 ## Forked repo info - Flare Hardhat Starter Kit
 
