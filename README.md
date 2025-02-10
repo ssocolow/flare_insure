@@ -1,6 +1,8 @@
 # Flareinsure - Rainfall Insurance on Flare with FDC (Flare Data Connector)
 
-Are you a farmer? Or someone who wants to hedge for or against rain? Then Flaresure is for you!
+## https://flareinsure.vercel.app/
+
+Are you a farmer worried about a drought? Or a traveler who wants to hedge against a rainy day? Then Flarinsure is for you!
 
 We use two smart contracts:
 
