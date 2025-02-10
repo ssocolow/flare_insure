@@ -7,9 +7,11 @@ Are you a farmer worried about a drought? Or a traveler who wants to hedge again
 We use two smart contracts:
 
 1. An Oracle contract that interfaces with the Flare Data Connector (FDC) to get rainfall data
-2. A Policy contract that allows you to buy and redeem policies
-  See our demo video here: https://www.loom.com/share/929e2d0cf44e42c8b6b8045d39f000aa?sid=a84aad35-5f57-4dc9-897b-e297c943bbab
+2. A Policy contract that allows you to buy and redeem policies  
+
+
 ![Example screenshot](screenshot.png)
+  See our demo video here: https://www.loom.com/share/929e2d0cf44e42c8b6b8045d39f000aa?sid=a84aad35-5f57-4dc9-897b-e297c943bbab
 
 ## Frontend
 Repo: https://github.com/Mushrimpy/blockinsure_flare. We used React, Next.js, and Scaffold-Eth to build the frontend. The frontend FDC button calls a server running with a docker container from this repo: https://github.com/ssocolow/docker-test.
