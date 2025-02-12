@@ -12,6 +12,14 @@ We use two smart contracts:
 
 ![Example screenshot](screenshot.png)
   See our demo video here: https://www.loom.com/share/929e2d0cf44e42c8b6b8045d39f000aa?sid=a84aad35-5f57-4dc9-897b-e297c943bbab
+  
+
+## Team
+Team members (from left to right):
+- [Phillip](https://github.com/phillipyan300) 
+- [Moncef](https://github.com/Mushrimpy)
+- [Simon](https://github.com/ssocolow)
+![Team](breakfast.jpg)
 
 ## Frontend
 Repo: https://github.com/Mushrimpy/blockinsure_flare. We used React, Next.js, and Scaffold-Eth to build the frontend. The frontend FDC button calls a server running with a docker container from this repo: https://github.com/ssocolow/docker-test.
@@ -28,9 +36,6 @@ Final design:
 
 Initial design:
 ![System design whiteboard](whiteboard.jpg)
-
-## Team
-![Team](breakfast.jpg)
 
 ## Forked repo info - Flare Hardhat Starter Kit
 
